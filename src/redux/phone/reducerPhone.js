@@ -1,5 +1,6 @@
 import { BUY_PHONE } from "./type";
 
+// creation du reducer
     const initialStatePhone = {
         phones: 5 
     }

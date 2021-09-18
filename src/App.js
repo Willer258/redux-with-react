@@ -1,12 +1,17 @@
-
-import './App.css';
-import PhoneComponent from './components/phone-component';
+import "./App.css";
+import PhoneComponent from "./components/phone-component";
+import store from './redux/store'
+import { Provider } from "react-redux";
 
 function App() {
   return (
-    <div className="App">
-     <PhoneComponent/>
-    </div>
+
+    // <Provider store = {store}> pour permeetre d'avoie le store dans toute l'application
+    <Provider store = {store}>
+      <div className="App">
+        <PhoneComponent />
+      </div>
+    </Provider>
   );
 }
 
