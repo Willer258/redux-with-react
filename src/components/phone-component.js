@@ -1,11 +1,15 @@
 import React from "react";
 import phone from "../image/image.jpg";
 import { buyPhone } from "../redux/phone/actionPhone";
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
 function PhoneComponent() {
 
+
+  //Definition du hook use selector
   const phones = useSelector(state => state.phones)
 
+  //Definition du hook useDispatch
+  const dispatch = useDispatch(buyPhone())
 
   return (
     <div className="p-5 text-center">
@@ -14,7 +18,7 @@ function PhoneComponent() {
         Dispos: <span>{phones}</span>
       </p>
       <button
-        onClick={() => buyPhone()}
+        onClick={()=>dispatch(buyPhone())}
         className="p-2 bg-green-200 hover:bg-green-500"
       >
         Acheter
