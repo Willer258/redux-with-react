@@ -1,18 +1,36 @@
-import {LOAD_COMMENT , LOAD_COMMENT_SUCCESS,LOAD_COMMENT_ERROR} from './type'
+import axios from 'axios'
+import {LOAD_COMMENTS , LOAD_COMMENTS_SUCCESS,LOAD_COMMENTS_ERROR} from './type'
 
 const loadApiComments = ()=>{
     return {
-        type: LOAD_COMMENT
+        type: LOAD_COMMENTS
     }
 }
 
-const loadCommentsSuccess = ()=>{
+const loadCommentsSuccess = (comments)=>{
     return {
-        type: LOAD_COMMENT_SUCCESS
+        type: LOAD_COMMENTS_SUCCESS,
+        payload:comments
     }
 }
-const loadCommentsError = ()=>{
+const loadCommentsError = (error)=>{
     return {
-        type: LOAD_COMMENT_ERROR
+        type: LOAD_COMMENTS_ERROR,
+        payload:error
+    }
+}
+
+export const apiCall = ()=>{
+    return (dispatch)=>{
+
+        dispatch(loadApiComments())
+
+        axios.get('https://jsonplaceholder.typicode.com/comments')
+        .then(res =>{
+            dispatch(loadCommentsSuccess(res.data))
+        })
+        .catch((err)=>{
+            dispatch(loadCommentsError(err.message))
+        })
     }
 }

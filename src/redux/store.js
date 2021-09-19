@@ -1,13 +1,16 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers,applyMiddleware } from "redux";
 import phoneReducer from './phone/reducerPhone'
 import tvReducer from "./tv/reducerTv";
+import commentReducer from "./comments/reducerComments";
+import thunk from "redux-thunk";
 
 // le store est creer et implanter sous app pour l 'utiliser'
 const rootReducer = combineReducers({
     phone:phoneReducer,
-    television : tvReducer
+    television : tvReducer,
+    comments : commentReducer,
 })
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer,applyMiddleware(thunk))
 
 export default store;
