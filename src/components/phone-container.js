@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import phone from "../image/image.jpg";
+import phone from "../image/image2.png";
 import { buyPhone } from "../redux/phone/actionPhone";
 
 function PhoneContainer(props) {
+  const [totalPhone, setTotalPhone] = useState(1);
+  console.log(totalPhone)
   const { phones, buyPhone } = props;
   console.log(props);
   return (
@@ -12,12 +14,21 @@ function PhoneContainer(props) {
       <p className="p-5">
         Dispos: <span>{phones}</span>
       </p>
-      <button
-        onClick={() => buyPhone()}
-        className="p-2 bg-green-200 hover:bg-green-500"
-      >
-        Acheter
-      </button>
+
+      <div className="flex space-y-5 flex-col">
+        <input
+          type="text" 
+          value={totalPhone}
+          className='border p-2'
+          onChange={(e) => setTotalPhone(e.target.value)}
+        />
+        <button
+          onClick={() => buyPhone(totalPhone)}
+          className="p-2 bg-green-200 hover:bg-green-500"
+        >
+          Acheter
+        </button>
+      </div>
     </div>
   );
 }
@@ -32,7 +43,7 @@ const mapStatetoProps = (state) => {
 //fonction pour map tous les dispactch necessaires pour phone component
 const mapDispatchProps = (dispatch) => {
   return {
-    buyPhone: () => dispatch(buyPhone()),
+    buyPhone: totalPhone => dispatch(buyPhone(totalPhone)),
     // *ne pas oublier buyPhone est une fonction*
   };
 };

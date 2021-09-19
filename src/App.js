@@ -9,7 +9,7 @@ function App() {
 
     // <Provider store = {store}> pour permeetre d'avoie le store dans toute l'application
     <Provider store = {store}>
-      <div className="App flex ">
+      <div className="App flex flex-col xl:flex-row ">
         <PhoneContainer />
         <TvContainer/>
       </div>

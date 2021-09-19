@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TV from '../image/image2.png'
+import TV from '../image/image3.png'
 import {buyTv} from '../redux/tv/actionTv'
 
 function tvContainer (props) {
