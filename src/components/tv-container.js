@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import TV from '../image/image3.png'
 import {buyTv} from '../redux/tv/actionTv'
 
 function tvContainer (props) {
-    const {tv , buyTv} = props
+    const {tv , buyTv} = props;
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [totalTv, setTotalTv] = useState(1)
     console.log(props)
     return(
         <div className="p-5 text-center">
@@ -12,12 +14,15 @@ function tvContainer (props) {
       <p className="p-5">
         Dispos: <span>{tv}</span>
       </p>
+      <div className='flex flex-col space-y-2'>
+        <input className='border p-2' type='text' value={totalTv} onChange={e=>setTotalTv(e.target.value)}/>
       <button
         className="p-2 bg-green-200 hover:bg-green-500"
-        onClick={()=>buyTv()}
+        onClick={()=>buyTv(totalTv)}
       >
         Acheter
       </button>
+      </div>
     </div>
     )
 
@@ -31,7 +36,7 @@ const mapStatetoProps = state=>{
 
 const mapDispatchProps = (dispatch) => {
     return{
-        buyTv : () => dispatch(buyTv()),
+        buyTv : (totalTv) => dispatch(buyTv(totalTv)),
     }
 }
 export default connect(mapStatetoProps,mapDispatchProps)(tvContainer)
