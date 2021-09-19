@@ -3,6 +3,7 @@ import PhoneContainer from "./components/phone-container";
 import store from './redux/store'
 import { Provider } from "react-redux";
 import TvContainer from "./components/tv-container";
+import CommentsContainer from "./components/comments-container";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <div className="App flex flex-col xl:flex-row ">
         <PhoneContainer />
         <TvContainer/>
+        
       </div>
+      <CommentsContainer/>
     </Provider>
   );
 }
