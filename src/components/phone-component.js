@@ -8,7 +8,7 @@ function PhoneComponent() {
   //Definition du hook use selector
   const phones = useSelector(state => state.phones)
 
-  //Definition du hook useDispatch
+  //Definition du hook useDispatch 
   const dispatch = useDispatch(buyPhone())
 
   return (
