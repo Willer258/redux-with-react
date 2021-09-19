@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import phone from "../image/image.jpg";
 import { buyPhone } from "../redux/phone/actionPhone";
 function PhoneComponent(props) {
-  const {phones , buyPhone} = props
+  const { phones, buyPhone } = props;
   console.log(props);
   return (
     <div className="p-5 text-center">
@@ -28,13 +28,11 @@ const mapStatetoProps = (state) => {
   };
 };
 
-
 //fonction pour map tous les dispactch necessaires pour phone component
 const mapDispatchProps = (dispatch) => {
   return {
-    buyPhone: () => dispatch(buyPhone())
+    buyPhone: () => dispatch(buyPhone()),
     // *ne pas oublier buyPhone est une fonction*
-    
   };
 };
 export default connect(mapStatetoProps, mapDispatchProps)(PhoneComponent);
@@ -44,7 +42,6 @@ export default connect(mapStatetoProps, mapDispatchProps)(PhoneComponent);
 //NB
 // mapStatetoProps permet de recupere notre state dans le reducer
 // mapDispatchProps permet de recuperer les action necessaire au composant
-
 
 // Un composant d’ordre supérieur (Higher-Order Component ou HOC, NdT)
 //  est une technique avancée de React qui permet de réutiliser la logique
