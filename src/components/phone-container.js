@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import phone from "../image/image.jpg";
 import { buyPhone } from "../redux/phone/actionPhone";
-function PhoneComponent(props) {
+
+function PhoneContainer(props) {
   const { phones, buyPhone } = props;
   console.log(props);
   return (
@@ -24,7 +25,7 @@ function PhoneComponent(props) {
 //A partir du provider la fonction mapStatetoProps recupere notre state dans le reducer pour nous le livrer en props
 const mapStatetoProps = (state) => {
   return {
-    phones: state.phones,
+    phones: state.phone.phones,
   };
 };
 
@@ -35,7 +36,7 @@ const mapDispatchProps = (dispatch) => {
     // *ne pas oublier buyPhone est une fonction*
   };
 };
-export default connect(mapStatetoProps, mapDispatchProps)(PhoneComponent);
+export default connect(mapStatetoProps, mapDispatchProps)(PhoneContainer);
 
 // export default  connect(mapStatetoProps)(PhoneComponent); permet grace a redux surpasser notre composant
 

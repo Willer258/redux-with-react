@@ -1,15 +1,17 @@
 import "./App.css";
-import PhoneComponent from "./components/phone-component";
+import PhoneContainer from "./components/phone-container";
 import store from './redux/store'
 import { Provider } from "react-redux";
+import TvContainer from "./components/tv-container";
 
 function App() {
   return (
 
     // <Provider store = {store}> pour permeetre d'avoie le store dans toute l'application
     <Provider store = {store}>
-      <div className="App">
-        <PhoneComponent />
+      <div className="App flex ">
+        <PhoneContainer />
+        <TvContainer/>
       </div>
     </Provider>
   );
